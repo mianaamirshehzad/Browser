@@ -1,118 +1,120 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const EcoSearchScreen = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <Icon name="home" size={24} color="#fff" />
+        <View style={styles.profileContainer}>
+          <Icon name="person" size={24} color="#fff" />
+          <View style={styles.notificationBadge}>
+            <Text style={styles.notificationText}>1</Text>
+          </View>
+        </View>
+        <Icon name="more-vert" size={24} color="#fff" />
+      </View>
+
+      {/* Logo */}
+      <View style={styles.logoContainer}>
+        <Text style={styles.logoText}>ECO</Text>
+      </View>
+
+      {/* Search Bar */}
+      <View style={styles.searchBar}>
+        <TextInput
+          style={styles.input}
+          placeholder="Search or type URL"
+          placeholderTextColor="#bdbdbd"
+        />
+        <Icon name="mic" size={24} color="#000" style={styles.micIcon} />
+      </View>
+
+      {/* Discover More */}
+      <Text style={styles.discoverMore}>Discover More..</Text>
+
+      {/* Settings Icon */}
+      <TouchableOpacity style={styles.settingsButton}>
+        <Icon name="settings" size={24} color="#004c66" />
+      </TouchableOpacity>
     </View>
   );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingHorizontal: 16,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#004c66',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  profileContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  highlight: {
-    fontWeight: '700',
+  notificationBadge: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    width: 20,
+    height: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: -10,
+    marginTop: -10,
+  },
+  notificationText: {
+    color: '#004c66',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  logoContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 50,
+  },
+  logoText: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color: '#004c66',
+  },
+  searchBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+    borderRadius: 30,
+    paddingHorizontal: 16,
+    marginTop: 20,
+  },
+  input: {
+    flex: 1,
+    height: 50,
+    color: '#000',
+  },
+  micIcon: {
+    marginLeft: 8,
+  },
+  discoverMore: {
+    marginTop: 20,
+    color: '#bdbdbd',
+    fontSize: 16,
+    textAlign: 'center',
+  },
+  settingsButton: {
+    position: 'absolute',
+    bottom: 50,
+    right: 20,
   },
 });
 
-export default App;
+export default EcoSearchScreen;
