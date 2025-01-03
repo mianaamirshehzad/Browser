@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SearchResultsScreen from '../screens/SearchResultsScreen';
 import SearchScreen from '../screens/SearchScreen';
 import NoResultsScreen from '../screens/NoResultsScreen';
+import WebViewScreen from '../screens/WebViewScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,11 @@ const MyStack = () => {
         <Stack.Screen
           name="NoResultsScreen"
           component={NoResultsScreen}
+          options={{title: 'Welcome'}}
+        />
+        <Stack.Screen
+          name="WebViewScreen"
+          component={WebViewScreen}
           options={{title: 'Welcome'}}
         />
       </Stack.Navigator>

@@ -28,15 +28,18 @@ const SearchScreen = () => {
             const data = await response.json();
             // console.log('Search Results:', data);
             let totalResults = data?.data?.searchInformation?.totalResults;
-            console.log(`total results ` , totalResults);
+            console.log(`total results `, totalResults);
 
             if (totalResults == 0) {
                 navigation.navigate('NoResultsScreen');
             } else {
-            navigation.navigate('SearchResultsScreen', { searchResults: data.data });
+                navigation.navigate('SearchResultsScreen', {
+                    searchResults: data.data,
+                    searchQuery: searchQuery.trim(), // Pass the search query here
+                });
 
             }
-            
+
 
             // Handle the search results here (e.g., update state or navigate)
         } catch (error: any) {

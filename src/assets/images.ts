@@ -8,5 +8,6 @@ export const Images = {
     search: require("../assets/search.png"),
     splash: require("../assets/splash.jpg"),
     no_results: require("../assets/no-results.png"),
+    x_mark: require("../assets/x-mark.png"),
     
 }
